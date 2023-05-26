@@ -1,10 +1,10 @@
 <?php
-$dbsevername = 'localhost';
-$username = "root"; 
-$password = ""; 
-$dbname = "Winkel"; 
+$host = 'localhost:3307';
+$db   = 'Winkel';
+$user = 'root';
+$pass = 'test';
+$charset = 'utf8mb4';
 
-$conn =  mysqli_connect($servername, $username, $password, $dbname);
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -14,13 +14,12 @@ $options = [
 try 
 {
      $pdo = new PDO($dsn, $user, $pass, $options);
+     echo "Connectie gemaakt!";
 } 
 catch (\PDOException $e) 
 {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-echo "Connected to database ($dbname).";
-$conn->close();
 ?>
 
 // database code
